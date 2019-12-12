@@ -88,6 +88,6 @@ def padding_iso_iec_7816_4(target, start, stop, modulo, when=BOTH):
         if target not in dizzy_iterator.current_mutated_objects:
             size_in_bits = modulo - (dizzy_iterator[start:stop].size % modulo)
             size_in_bytes = ((size_in_bits + 7) // 8)
-            dizzy_iterator[target] = Value(b"\80" + (size_in_bytes - 1) * b"\x00", size_in_bits)
+            dizzy_iterator[target] = Value(b"\x80" + (size_in_bytes - 1) * b"\x00", size_in_bits)
 
     return (func, when)

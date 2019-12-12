@@ -35,7 +35,7 @@ from dizzy.value import Value
 
 class TestRegex(TestCase):
     def test_init(self):
-        f = Regex("test", "[0-9a-f]{1,2}\.[a-g]")
+        f = Regex("test", "[0-9a-f]{1,2}\\.[a-g]")
         self.assertEqual(f.name, "test")
 
     def test_iter(self):
@@ -421,11 +421,11 @@ class TestRegex(TestCase):
                     Value(b'fe.f', 32), Value(b'fe.g', 32), Value(b'ff.a', 32), Value(b'ff.b', 32), Value(b'ff.c', 32),
                     Value(b'ff.d', 32), Value(b'ff.e', 32), Value(b'ff.f', 32), Value(b'ff.g', 32)]
 
-        f = Regex("test", "[0-9a-f]{1,2}\.[a-g]")
+        f = Regex("test", "[0-9a-f]{1,2}\\.[a-g]")
         self.assertEqual([i for i in f], expected)
 
     def test_length(self):
-        f = Regex("test", "[0-9a-f]{1,2}\.[a-g]")
+        f = Regex("test", "[0-9a-f]{1,2}\\.[a-g]")
         self.assertEqual(f.length(), 1904)
         self.assertEqual(len(list(f)), f.length())
 

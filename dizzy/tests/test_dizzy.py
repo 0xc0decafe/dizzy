@@ -181,10 +181,9 @@ class TestDizzy(TestCase):
             self.assertEqual(excepted[i:], list(Dizz("test", objects, fuzz="full", start_at=i)))
 
     def test_load(self):
-        expected = Value(b'\x00\x00\x00.\xffSMBr\x00\x00\x00\x00\x18C\xc8\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
-                         b'\x00\x00\x00\xfe\xff\x00\x00\x00\x00\x00\x0b\x00\x02SMB 2.???\x00', 400)
+        expected = Value(b'\x00\x00\x00\x00\x00\n\x18\x00\x00\x00', 80)
 
-        d = load_dizz("test", "dizzes/smb2/smb_com_negotiate_req.dizz")
+        d = load_dizz("test", "modules_src/demo/demo/dizz/demo.dizz")
 
         self.assertEqual(first(d), expected)
 

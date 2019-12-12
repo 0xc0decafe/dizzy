@@ -7,7 +7,7 @@ objects = [
     Field("field2",     3 * b"\x00", fuzz="std"),
 
     #a list
-    List("list_field",  config_value("a_global_option")),
+    #List("list_field",  config_value("a_global_option")),
 
     #a length field
     Field("len_field",  b"\x00\x00",   fuzz="std"),

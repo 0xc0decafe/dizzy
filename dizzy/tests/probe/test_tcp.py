@@ -38,8 +38,8 @@ class TestTcp(TestCase):
         config_parser = ConfigParser()
         config_parser.add_section("probe")
         config_parser.set("probe", "type", "tcp")
-        config_parser.set("probe", "target.host", "127.0.0.1")
-        config_parser.set("probe", "target.port", "12345")
+        config_parser.set("probe", "target_host", "127.0.0.1")
+        config_parser.set("probe", "target_port", "12345")
 
         self.section_proxy = config_parser['probe']
 
@@ -47,7 +47,7 @@ class TestTcp(TestCase):
         probe.open()
         result = probe.probe()
         probe.close()
-        self.assertTrue(result)
+        self.assertFalse(result)
 
 if __name__ == '__main__':
     main()

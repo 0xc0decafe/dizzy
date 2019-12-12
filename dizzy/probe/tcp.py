@@ -92,6 +92,7 @@ class DizzyProbe(object):
         except Exception as e:
             if not self.socket is None:
                 self.socket.close()
+                self.socket = None
             print_dizzy("probe/tcp: open error: %s" % e)
             print_dizzy(e, DEBUG)
 
@@ -106,10 +107,14 @@ class DizzyProbe(object):
                 print_dizzy(e, DEBUG)
             else:
                 self.socket.close()
+                self.socket = None
                 return True
         return False
 
     def close(self):
         if not self.is_open:
             return
+        if not self.socket is None:
+            self.socket.close()
+            self.socket = None
         self.is_open = False
